@@ -39,14 +39,16 @@ for i in range(n):
 
 # Iterate through the recipes_list and display each recipe in the given format
 for recipe in recipes_list:
-    # Determine the difficulty of the recipe
-    if recipe["cooking_time"] < 10 and len(recipe["ingredients"]) < 4:
+    cooking_time = recipe["cooking_time"] 
+    ingredient_cnt = len(recipe["ingredients"]) 
+
+    if cooking_time < 10 and ingredient_cnt < 4:
         difficulty = "Easy"
-    elif recipe["cooking_time"] < 10 and len(recipe["ingredients"]) >= 4:
+    elif cooking_time < 10 and ingredient_cnt >= 4:
         difficulty = "Medium"
-    elif recipe["cooking_time"] >= 10 and len(recipe["ingredients"]) < 4:
+    elif cooking_time >= 10 and ingredient_cnt < 4:
         difficulty = "Intermediate"
-    elif recipe["cooking_time"] >= 10 and len(recipe["ingredients"]) >= 4:
+    elif cooking_time >= 10 and ingredient_cnt >= 4:
         difficulty = "Hard"
     
     # Display the recipe details
