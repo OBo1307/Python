@@ -14,13 +14,13 @@ def search_ingredient(data):
     all_ingredients = data['all_ingredients']
 
     print("The available ingredients are: ")
-    for i, ingredient in enumerate(all_ingredients):
-        print(f"{i+1}. {ingredient}")
+    for i, ingredient in enumerate(all_ingredients, 1):
+        print(f"{i}. {ingredient}")
     
     try:
         ingredient_num = int(input("Enter the number corresponding to the ingredient you would like to search for: "))
         ingredient_searched = all_ingredients[ingredient_num-1]
-    except ValueError:
+    except (ValueError, IndexError):
         print("Invalid input! Please enter a valid ingredient number.")
     else:
         print("Recipes containing", ingredient_searched + ":")
@@ -28,7 +28,8 @@ def search_ingredient(data):
             if ingredient_searched in recipe['ingredients']:
                 display_recipe(recipe)
 
-filename = input("Enter the name of the file to load the recipes from: ")
+filename = input("Enter the name of the file to load the recipes from (without extension): ")
+filename += ".bin"
 
 try:
     with open(filename, "rb") as file:

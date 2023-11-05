@@ -5,7 +5,7 @@ def take_recipe():
 
     name = input("Enter the name of the recipe: ")
     cooking_time = int(input("Enter the cooking time (in minutes): "))
-    ingredients = input("Enter the ingredients of the recipe (separated by commas): ").split(",")
+    ingredients = input("Enter the ingredients of the recipe (separated by commas): ").lower().split(",")
     difficulty = calc_difficulty(cooking_time, len(ingredients))
 
     recipe = {
@@ -30,7 +30,8 @@ def calc_difficulty(cooking_time, ingredient_cnt):
     
     return difficulty
 
-filename = input("Enter the name of the file to save the recipes: ")
+filename = input("Enter the name of the file to save the recipes (without extension): ")
+filename += ".bin"
 
 try:
     with open(filename, "rb") as file:
