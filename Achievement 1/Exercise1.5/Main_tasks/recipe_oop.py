@@ -18,10 +18,12 @@ class Recipe:
     
     def set_cooking_time(self, cooking_time):
         self.cooking_time = cooking_time
+        self.calculate_difficulty()
     
     def add_ingredients(self, *ingredients):
         self.ingredients.extend(ingredients)
         self.update_all_ingredients()
+        self.calculate_difficulty()
     
     def get_ingredients(self):
         return self.ingredients
@@ -53,7 +55,7 @@ class Recipe:
                 Recipe.all_ingredients.append(ingredient)
     
     def __str__(self):
-        output = f"\nRecipe: {self.name}\nIngredients: {', '.join(self.ingredients)}\nCooking time: {self.cooking_time} minutes\nDifficulty: {self.get_difficulty()}"
+        output = f"\nRecipe: {self.get_name}\nIngredients: {', '.join(self.get_ingredients)}\nCooking time: {self.get_cooking_time} minutes\nDifficulty: {self.get_difficulty()}"
         return output
     
 def recipe_search(data, search_term):
