@@ -7,9 +7,9 @@ conn = mysql.connector.connect(
 
 cursor = conn.cursor()
 
-cursor.execute("CREATE DATABASE IF NOT EXISTS task_database")
+cursor.execute("CREATE DATABASE IF NOT EXISTS task_database;")
 
-cursor.execute("USE task_database")
+cursor.execute("USE task_database;")
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS Recipes(
                id INT AUTO_INCREMENT PRIMARY KEY,
@@ -25,6 +25,9 @@ def create_recipes(conn, cursor):
     cooking_time = int(input("Enter the cooking time in minutes: "))
     ingredients = input("Enter the ingredients separated by commas: ").split(", ")
     difficulty = calculate_difficulty(cooking_time, ingredients)
+
+    # Sort the ingredients alphabetically
+    ingredients.sort()
 
     # Convert ingredients list to a comma-separated string
     ingredients_str = ", ".join(ingredients)
@@ -64,7 +67,7 @@ def search_recipes(conn, cursor):
     
     # Display the available ingredients to the user
     print("\nAvailable ingredients: ")
-    print("\n===========================================")
+    print("="*45)
     for index, ingredient in enumerate(all_ingredients, start=1):
         print(f"{index}. {ingredient}")
     
@@ -72,12 +75,14 @@ def search_recipes(conn, cursor):
         # Ask the user to select an ingredient to search for
         ingredient_index = int(input("Choose an ingredient to search for (enter the corresponding number): "))
         search_ingredient = all_ingredients[ingredient_index - 1]
-    except ValueError as e:
+    except ValueError:
         print("Please enter a valid number.")
+    except IndexError:
+        print("Please enter a valid ingredient number.")
     else:
         # Search for recipes containing the selected ingredient
         print(f"\nRecipes containing {search_ingredient}:")
-        print("\n===========================================")
+        print("="*45)
         cursor.execute("SELECT id, name, ingredients, cooking_time, difficulty FROM Recipes WHERE ingredients LIKE %s", ("%" + search_ingredient + "%",))
         search_results = cursor.fetchall()
 
@@ -90,7 +95,7 @@ def search_recipes(conn, cursor):
 
 # Function to update an existing recipe
 def update_recipes(conn, cursor):
-    cursor.execute("SELECT id, name FROM Recipes")
+    cursor.execute("SELECT id, name FROM Recipes;")
     recipes = cursor.fetchall()
     print("Available recipes: ")
     for recipe in recipes:
@@ -131,7 +136,7 @@ def update_recipes(conn, cursor):
 
 # Function to delete a recipe
 def delete_recipes(conn, cursor):
-    cursor.execute("SELECT id, name FROM Recipes")
+    cursor.execute("SELECT id, name FROM Recipes;")
     recipes = cursor.fetchall()
 
     print("Available recipes: ")
@@ -147,19 +152,19 @@ def delete_recipes(conn, cursor):
 
 # Function to see all recipes
 def view_recipes(conn, cursor):
-    cursor.execute("SELECT id, name, ingredients, cooking_time, difficulty FROM Recipes")
+    cursor.execute("SELECT id, name, ingredients, cooking_time, difficulty FROM Recipes;")
     all_recipes = cursor.fetchall()
 
     if all_recipes:
         print("All Recipes:")
-        print("\n===========================================")
+        print("="*45)
         for recipe in all_recipes:
             print("ID: ", recipe[0])
             print("Name: ", recipe[1])
             print("Ingredients: ", recipe[2])
             print("Cooking Time: ", recipe[3])
             print("Difficulty: ", recipe[4])
-            print("-------------------------------------------")
+            print("-"*45)
     else:
         print("No recipes found.")
 
@@ -167,7 +172,7 @@ def view_recipes(conn, cursor):
 def main_menu(conn, cursor):
     while True:
         print("\nMAIN MENU:")
-        print("\n===========================================")
+        print("="*45)
         print("What would you like to do? Pick a choice!")
         print(" 1. Create a new recipe")
         print(" 2. Search for a recipe by ingredient")
