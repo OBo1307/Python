@@ -1,34 +1,10 @@
-/.DS_Store
-Achievement 1/Exercise1.5/.DS_Store
-Achievement 1/Exercise1.5/Main_tasks/.DS_Store
-Achievement 1/Exercise1.5/Practice_tasks/.DS_Store
-Achievement 1/.DS_Store
-Achievement 1/Exercise1.4/.DS_Store
-Achievement 1/.DS_Store
-Achievement 1/Exercise1.4/.DS_Store
-Achievement 1/Exercise1.6/.DS_Store
-Achievement 1/Exercise1.6/Main_tasks/.DS_Store
-Achievement 1/Exercise1.6/Practice_tasks/.DS_Store
-Achievement 1/Exercise1.7/.DS_Store
-Achievement 1/Exercise1.7/Main_tasks/.DS_Store
-Achievement 2/.DS_Store
-Achievement 2/Exercise2.2/.DS_Store
-Achievement 2/Exercise2.2/A2_Recipe_app/src/.DS_Store
-Achievement 2/Exercise2.2/A2_Recipe_app/.DS_Store
-Achievement 2/Exercise2.3/.DS_Store
-Achievement 2/src/.DS_Store
-Achievement 2/Exercise2.4/.DS_Store
-Achievement 2/Exercise2.2/A2_Recipe_app/recipe-app/
-Achievement 2/Exercise2.5/.DS_Store
-Achievement 2/Exercise2.5/screenshots/.DS_Store
-Achievement 2/src/media/.DS_Store
-Achievement 2/src/sales/.DS_Store
-Achievement 2/src/sales/static/.DS_Store
-Achievement 2/src/sales/static/sales/images/.DS_Store
-Achievement 2/src/sales/static/sales/.DS_Store
-Achievement 2/Exercise2.6/.DS_Store
-Achievement 2/src/templates/.DS_Store
-Achievement 2/src/templates/auth/.DS_Store
+# Text backup files
+*.bak
+
+#Database
+*.sqlite3
+
+*.DS_Store
 Achievement 2/Exercise2.6/Screen Recording 2023-12-18 at 09.17.24.mov
 Achievement 2/Exercise2.7/.DS_Store
 Achievement 2/Exercise2.7/user-journey.mp4
